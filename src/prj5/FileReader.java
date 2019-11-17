@@ -19,6 +19,9 @@ public class FileReader {
     private LinkedList<Student> StudentSurvy;
 
 
+    /**
+     * constructor
+     */
     public FileReader() {
         SongList = readSongTitles();
         StudentSurvy = readSurvey();
@@ -26,6 +29,11 @@ public class FileReader {
     }
 
 
+    /**
+     * readSurvey
+     * 
+     * @return LinkedList<Student>
+     */
     private LinkedList<Student> readSurvey() {
         StudentSurvy = new LinkedList<Student>();
         File newFile = new File(surveyPath);
@@ -82,6 +90,11 @@ public class FileReader {
     }
 
 
+    /**
+     * readSongTitles
+     * 
+     * @return LinkedList<Song>
+     */
     private LinkedList<Song> readSongTitles() throws FileNotFoundException {
         SongList = new LinkedList<Song>();
         File newFile = new File(SongTitlesPath);
