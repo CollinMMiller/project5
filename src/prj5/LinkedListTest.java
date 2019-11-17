@@ -153,6 +153,7 @@ public class LinkedListTest extends TestCase{
         assertEquals("{A, B, C}", test.toString());
     }
     
+    // implements comparable
     /**
      * Tests the Iterator
      */
