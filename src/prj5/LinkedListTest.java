@@ -222,4 +222,44 @@ public class LinkedListTest extends TestCase{
         assertNotNull(e);
         assertTrue(e instanceof IndexOutOfBoundsException);
     }
+    
+    public void testSortByTitle()
+    {
+        test.sortByTitle();
+        test.add("Hey");
+        test.add("Woah");
+        
+        Exception e = null;
+        
+        try
+        {
+            test.sortByTitle();
+        }
+        catch (Exception x)
+        {
+            e = x;
+        }
+        assertNotNull(e);
+        assertTrue(e instanceof IllegalStateException);
+        
+        Song song1 = new Song("B", "", 0, "");
+        Song song2 = new Song("D", "", 0, "");
+        Song song3 = new Song("a", "", 0, "");
+        Song song4 = new Song("t", "", 0, "");
+        Song song5 = new Song("K", "", 0, "");
+        LinkedList<Song> songs = new LinkedList<Song>();
+        songs.add(song1);
+        songs.add(song2);
+        songs.add(song3);
+        songs.add(song4);
+        songs.add(song5);
+        
+        songs.sortByTitle();
+        
+        assertEquals(song3, songs.get(0));
+        assertEquals(song1, songs.get(1));
+        assertEquals(song2, songs.get(2));
+        assertEquals(song5, songs.get(3));
+        assertEquals(song4, songs.get(4));
+    }
 }

@@ -47,7 +47,7 @@ public class LinkedList<E> {
      * @throws IllegalArgumentException if the element is null
      */
     public boolean add(E element)
-    {
+    {   
         if (element == null)
         {
             throw new IllegalArgumentException("Element is null");
@@ -387,4 +387,41 @@ public class LinkedList<E> {
         }
     }
 
+    //Sorting method
+    
+    /**
+     * Sorts by alphabetically by title
+     */
+    public void sortByTitle()
+    {
+        if (size == 0)
+        {
+            return;
+        }
+        if (head.data.getClass() != Song.class)
+        {
+            throw new IllegalStateException("Can only run sort on Song Lists");
+        }
+        
+        
+        for (int i = 0; i < size; i++)
+        {
+            int lowestIndex = i;
+            String lowest = ((Song)get(i)).getTitle().toLowerCase();
+            for (int j = i + 1; j < size; j++)
+            {
+                String nextCheck = ((Song)get(j)).getTitle().toLowerCase();
+                if (nextCheck.compareTo(lowest) < 0)
+                {
+                    lowest = nextCheck;
+                    lowestIndex = j;
+                }
+            }
+            E song = get(i); 
+            remove(lowestIndex);
+            add(i, song);
+        }
+        
+    }
+    
 }
