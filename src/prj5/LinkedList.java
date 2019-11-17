@@ -10,7 +10,7 @@ import java.util.List;
  * @version 2019.11.17
  * @param <E> The type of object that the class will store
  */
-public class LinkedList<E> implements List<E> {
+public class LinkedList<E> {
     
     /**
      * Size of the LinkedList
@@ -140,9 +140,7 @@ public class LinkedList<E> implements List<E> {
                 if ((currentIndex + 1) ==  index)
                 {
                     E item = this.get(index);
-                    Node<E> newNext = current.next.next;
-                    current.setNext(newNext);
-                    current.setNext(null);
+                    current.setNext(current.next.next);
                     size--;
                     return item;
                 }
@@ -417,11 +415,112 @@ public class LinkedList<E> implements List<E> {
                     lowestIndex = j;
                 }
             }
-            E song = get(i); 
+            E song = get(lowestIndex); 
             remove(lowestIndex);
             add(i, song);
         }
         
     }
     
+    /**
+     * Sorts by alphabetically by artist
+     */
+    public void sortByArtist()
+    {
+        if (size == 0)
+        {
+            return;
+        }
+        if (head.data.getClass() != Song.class)
+        {
+            throw new IllegalStateException("Can only run sort on Song Lists");
+        }
+        
+        
+        for (int i = 0; i < size; i++)
+        {
+            int lowestIndex = i;
+            String lowest = ((Song)get(i)).getArtist().toLowerCase();
+            for (int j = i + 1; j < size; j++)
+            {
+                String nextCheck = ((Song)get(j)).getArtist().toLowerCase();
+                if (nextCheck.compareTo(lowest) < 0)
+                {
+                    lowest = nextCheck;
+                    lowestIndex = j;
+                }
+            }
+            E song = get(lowestIndex); 
+            remove(lowestIndex);
+            add(i, song);
+        }
+        
+    }
+    
+    /**
+     * Sorts by alphabetically by genre
+     */
+    public void sortByGenre()
+    {
+        if (size == 0)
+        {
+            return;
+        }
+        if (head.data.getClass() != Song.class)
+        {
+            throw new IllegalStateException("Can only run sort on Song Lists");
+        }
+        
+        
+        for (int i = 0; i < size; i++)
+        {
+            int lowestIndex = i;
+            String lowest = ((Song)get(i)).getGenre();
+            for (int j = i + 1; j < size; j++)
+            {
+                String nextCheck = ((Song)get(j)).getGenre();
+                if (nextCheck.compareTo(lowest) < 0)
+                {
+                    lowest = nextCheck;
+                    lowestIndex = j;
+                }
+            }
+            E song = get(lowestIndex); 
+            remove(lowestIndex);
+            add(i, song);
+        }
+    }
+    
+    /**
+     * Sorts by alphabetically by year
+     */
+    public void sortByYear()
+    {
+        if (size == 0)
+        {
+            return;
+        }
+        if (head.data.getClass() != Song.class)
+        {
+            throw new IllegalStateException("Can only run sort on Song Lists");
+        }
+        
+        for (int i = 0; i < size; i++)
+        {
+            int lowestIndex = i;
+            int lowest = ((Song)get(i)).getYear();
+            for (int j = i + 1; j < size; j++)
+            {
+                int nextCheck = ((Song)get(j)).getYear();
+                if (nextCheck < lowest)
+                {
+                    lowest = nextCheck;
+                    lowestIndex = j;
+                }
+            }
+            E song = get(lowestIndex); 
+            remove(lowestIndex);
+            add(i, song);
+        }
+    }
 }
