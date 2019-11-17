@@ -19,10 +19,14 @@ public class FileReader {
     private LinkedList<Student> StudentSurvy;
 
 
+<<<<<<< HEAD
+    public FileReader() throws FileNotFoundException {
+=======
     /**
      * constructor
      */
     public FileReader() {
+>>>>>>> 754f008906017ce9d4c0a396b7dff4b66ddaa41b
         SongList = readSongTitles();
         StudentSurvy = readSurvey();
 
@@ -77,12 +81,23 @@ public class FileReader {
                 }
 
             }
-
+            LinkedList<String> heardA = new LinkedList<String>();
+            for (int i = 0; i < heard.length; i++)
+            {
+                heardA.add(heard[i]);
+            }
+            
+            LinkedList<String> likedA = new LinkedList<String>();
+            for (int i = 0; i < liked.length; i++)
+            {
+                likedA.add(heard[i]);
+            }
+            
             String major = tokens[2].trim();
             String region = tokens[3].trim();
             String hobby = tokens[4].trim();
 
-            StudentSurvy.add(new Student(major, region, hobby, liked, heard));
+            StudentSurvy.add(new Student(major, region, hobby, likedA, heardA));
         }
 
         return StudentSurvy;

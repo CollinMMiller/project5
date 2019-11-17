@@ -33,8 +33,8 @@ public class Student {
         MajorEnum major,
         RegionEnum region,
         HobbyEnum hobby,
-        private LinkedList<Song> heard,
-        private LinkedList<Song> liked) {
+        LinkedList<Song> heard,
+        LinkedList<Song> liked) {
 
         this.major = major;
         this.region = region;
