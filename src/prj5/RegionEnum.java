@@ -5,7 +5,7 @@ package prj5;
  * @author Callie Louderback (calliel)
  * @version 2019.11.17
  */
-public enum ReigonEnum {
+public enum RegionEnum {
     
     NORTHEAST, SOUTHWEST, OTHER_US, NOT_US;
 

@@ -33,8 +33,8 @@ public class Student {
         MajorEnum major,
         RegionEnum region,
         HobbyEnum hobby,
-        private LinkedList<Song> heard,
-        private LinkedList<Song> liked) {
+        LinkedList<Song> heard,
+        LinkedList<Song> liked) {
 
         this.major = major;
         this.region = region;
@@ -48,7 +48,7 @@ public class Student {
      * getMajor
      * @return MajorEnum
      */
-    public MajorEnum getMajor
+    public MajorEnum getMajor()
     {
         return major;
 
@@ -57,7 +57,7 @@ public class Student {
      * getRegion
      * @return RegionEnum
      */
-    public RegionEnum getRegion
+    public RegionEnum getRegion()
     {
         return region;
     }
@@ -65,7 +65,7 @@ public class Student {
      * getHobby
      * @return HobbyEnum
      */
-    public HobbyEnum getHobby
+    public HobbyEnum getHobby()
     {
         return hobby;
     }
