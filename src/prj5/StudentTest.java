@@ -47,7 +47,6 @@ public class StudentTest extends TestCase {
      */
     public void testGetMajor{
         assertEquals(m, s.getMajor());
-
     }
     
 }
