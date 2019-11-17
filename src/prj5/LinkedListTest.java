@@ -186,4 +186,39 @@ public class LinkedListTest extends TestCase{
         }
         assertNotNull(e);
     }
+    
+    public void testAddInsert()
+    {
+        test.add("test");
+        test.add(0, "test2");
+        assertEquals("test2", test.get(0));
+        test.add(1, "Test3");
+        assertEquals("Test3", test.get(1));
+        test.add(3, "last");
+        assertEquals("last", test.get(3));
+        
+        Exception e = null;
+        try
+        {
+            test.add(-1, "test");
+        }
+        catch (Exception x)
+        {
+            e = x;
+        }
+        assertNotNull(e);
+        assertTrue(e instanceof IndexOutOfBoundsException);
+        
+        e = null;
+        try
+        {
+            test.add(12, "test");
+        }
+        catch (Exception x)
+        {
+            e = x;
+        }
+        assertNotNull(e);
+        assertTrue(e instanceof IndexOutOfBoundsException);
+    }
 }

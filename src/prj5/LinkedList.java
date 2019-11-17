@@ -2,10 +2,11 @@ package prj5;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.List;
 
 /**
  * Implementation of a LinkedList
- * @author Callie Louderback (Calliel)
+ * @author Callie Louderback (Calliel), Collin Miller (collinm2)
  * @version 2019.11.17
  * @param <E> The type of object that the class will store
  */
@@ -42,9 +43,10 @@ public class LinkedList<E> {
     /**
      * Adds a new Node to the LinkedList
      * @param element Element to be stored in the node
+     * @return true if successful
      * @throws IllegalArgumentException if the element is null
      */
-    public void add(E element)
+    public boolean add(E element)
     {
         if (element == null)
         {
@@ -64,6 +66,40 @@ public class LinkedList<E> {
             current.setNext(new Node<E>(element));
         }
         size++;
+        return true;
+    }
+    
+    /**
+     * Inserts element at specified index
+     */
+    public void add(int index, E element)
+    {
+        Node<E> newNode = new Node<E>(element);
+        if (index < 0 || index > size)
+        {
+            throw new IndexOutOfBoundsException();
+        }
+        size++;
+        
+        if (index == 0)
+        {
+            newNode.next = head;
+            head = newNode;
+            return;
+        }
+        
+        Node<E> place = head;
+        for (int i = 0; i < index - 1; i++)
+        {
+            place = place.next;
+        }
+
+        if (index != size - 1)
+        {
+            newNode.next = place.next;
+        }
+        
+        place.next = newNode;
     }
     
     /**
