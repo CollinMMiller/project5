@@ -35,8 +35,12 @@ public class StudentTest extends TestCase
     /**
      * getRegion test
      */
+<<<<<<< HEAD
     public void testGetRegion()
     {
+=======
+    public void testGetRegion(){
+>>>>>>> 593cdb1aa7871d2d5da83adfc7bb80f6c8ede34d
         assertEquals(r, s.getRegion());
 
     }
@@ -45,8 +49,12 @@ public class StudentTest extends TestCase
     /**
      * getHobby test
      */
+<<<<<<< HEAD
     public void testGetHobby()
     {
+=======
+    public void testGetHobby(){
+>>>>>>> 593cdb1aa7871d2d5da83adfc7bb80f6c8ede34d
         assertEquals(hobby, s.getHobby());
 
     }
@@ -55,8 +63,12 @@ public class StudentTest extends TestCase
     /**
      * getMajor test
      */
+<<<<<<< HEAD
     public void testGetMajor()
     {
+=======
+    public void testGetMajor(){
+>>>>>>> 593cdb1aa7871d2d5da83adfc7bb80f6c8ede34d
         assertEquals(m, s.getMajor());
     }
 
