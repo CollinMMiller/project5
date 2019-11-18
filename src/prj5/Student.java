@@ -16,7 +16,7 @@ public class Student {
 
 
     /**
-     * read
+     * Student()
      * 
      * @param major
      *            student's major
