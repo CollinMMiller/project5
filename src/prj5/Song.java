@@ -26,11 +26,11 @@ public class Song {
     /**
      * Number of people who have liked the song
      */
-    private int numberOfLiked;
+    private int[] numberOfLiked = new int[4];
     /**
      * Number of people who have heard the song
      */
-    private int numberOfHeard;
+    private int[] numberOfHeard = new int[4];
     
     /**
      * Creates a new Song
@@ -96,8 +96,9 @@ public class Song {
      * Returns the number of people who have liked the song
      * @return Number of people who have liked the song
      */
-    public int getLiked()
+    public int getLiked(int index, int liked)
     {
+        
         return numberOfLiked;
     }
     
@@ -105,7 +106,7 @@ public class Song {
      * Sets the amount of people who have heard the song
      * @param heard The number of people who have heard the song
      */
-    public void setHeard(int heard)
+    public void setHeard(int index, int heard)
     {
         numberOfHeard = heard;
     }

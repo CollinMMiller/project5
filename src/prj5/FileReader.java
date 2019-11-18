@@ -19,8 +19,6 @@ public class FileReader {
     private LinkedList<Student> StudentSurvy;
 
 
-
-
     /**
      * constructor
      */
@@ -80,28 +78,18 @@ public class FileReader {
                 }
 
             }
-            LinkedList<String> heardA = new LinkedList<String>();
-            for (int i = 0; i < heard.length; i++)
-            {
-                heardA.add(heard[i]);
-            }
-            
-            LinkedList<String> likedA = new LinkedList<String>();
-            for (int i = 0; i < liked.length; i++)
-            {
-                likedA.add(heard[i]);
-            }
+
             MajorEnum major;
-            char m= tokens[2].trim().charAt(tokens[2].trim().length()-1);
-            switch(m){
-                
+            char m = tokens[2].trim().charAt(tokens[2].trim().length() - 1);
+            switch (m) {
+
                 case 'i':
-                     major = MajorEnum.COMP_SCI;
+                    major = MajorEnum.COMP_SCI;
                     break;
                 case 'a':
-                     major = MajorEnum.MATH_CMDA;
+                    major = MajorEnum.MATH_CMDA;
                     break;
-                case 'g':  
+                case 'g':
                     major = MajorEnum.OTHER_ENG;
                     break;
                 default:
@@ -109,16 +97,16 @@ public class FileReader {
                     break;
             }
             RegionEnum region;
-            char r= tokens[3].trim().charAt(2);
-            switch(r){
-                
+            char r = tokens[3].trim().charAt(2);
+            switch (r) {
+
                 case 'r':
                     region = RegionEnum.NORTHEAST;
                     break;
                 case 'u':
                     region = RegionEnum.SOUTHWEST;
                     break;
-                case 'h':  
+                case 'h':
                     region = RegionEnum.OTHER_US;
                     break;
                 default:
@@ -126,23 +114,27 @@ public class FileReader {
                     break;
             }
             HobbyEnum hobby;
-            char h= tokens[4].trim().charAt(0);
-            switch(h){
-                
+            char h = tokens[4].trim().charAt(0);
+            switch (h) {
+
                 case 'r':
                     hobby = HobbyEnum.READ;
                     break;
                 case 'a':
                     hobby = HobbyEnum.ART;
                     break;
-                case 's':  
+                case 's':
                     hobby = HobbyEnum.SPORTS;
                     break;
                 default:
                     hobby = HobbyEnum.MUSIC;
                     break;
             }
+            LinkedList<Song> heardA = new LinkedList<Song>();
 
+            LinkedList<Song> likedA = new LinkedList<Song>();
+
+            //
 
             StudentSurvy.add(new Student(major, region, hobby, likedA, heardA));
         }
@@ -165,7 +157,6 @@ public class FileReader {
         while (file.hasNextLine()) {
             String line = file.nextLine();
             String[] tokens = line.split(",");
-
 
             String title = tokens[0].trim();
             String artist = tokens[1].trim();
