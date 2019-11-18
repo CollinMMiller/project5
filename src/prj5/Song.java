@@ -26,11 +26,11 @@ public class Song {
     /**
      * Number of people who have liked the song
      */
-    private int numberOfLiked;
+    private int[] numberOfLiked;
     /**
      * Number of people who have heard the song
      */
-    private int numberOfHeard;
+    private int[] numberOfHeard;
     
     /**
      * Creates a new Song
@@ -45,6 +45,8 @@ public class Song {
         this.artist = artist;
         this.year = year;
         this.genre = genre;
+        numberOfLiked = new int[4];
+        numberOfHeard = new int[4];
     }
     
     /**
@@ -87,16 +89,16 @@ public class Song {
      * Sets the number of people who have liked the song
      * @param liked Amount of people who have liked the song
      */
-    public void setLiked(int liked)
+    public void setLiked(int index, int liked)
     {
-        numberOfLiked = liked;
+        numberOfLiked[index] = liked;
     }
     
     /**
      * Returns the number of people who have liked the song
      * @return Number of people who have liked the song
      */
-    public int getLiked()
+    public int[] getLiked()
     {
         return numberOfLiked;
     }
@@ -105,16 +107,16 @@ public class Song {
      * Sets the amount of people who have heard the song
      * @param heard The number of people who have heard the song
      */
-    public void setHeard(int heard)
+    public void setHeard(int index, int heard)
     {
-        numberOfHeard = heard;
+        numberOfHeard[index] = heard;
     }
     
     /**
      * Returns the number of people who have heard the song
      * @return The number of people who have hard the song
      */
-    public int getHeard()
+    public int[] getHeard()
     {
         return numberOfHeard;
     }
