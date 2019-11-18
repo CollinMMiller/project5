@@ -121,4 +121,22 @@ public class Song {
     {
         return numberOfHeard;
     }
+
+    /**
+     * Increments a value of liked
+     * @param index which major/region/hobby
+     */
+    public void incrementLiked(int index)
+    {
+        numberOfLiked[index]++;
+    }
+
+    /**
+     * Increments a value of heard
+     * @param index which major/region/hobby
+     */
+    public void incrementHeard(int index)
+    {
+        numberOfHeard[index]++;
+    }
 }

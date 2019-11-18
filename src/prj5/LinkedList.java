@@ -10,7 +10,7 @@ import java.util.List;
  * @version 2019.11.17
  * @param <E> The type of object that the class will store
  */
-public class LinkedList<E> {
+public class LinkedList<E> implements Iterable<E>{
     
     /**
      * Size of the LinkedList
