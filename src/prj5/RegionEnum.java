@@ -7,6 +7,6 @@ package prj5;
  */
 public enum RegionEnum {
     
-    NORTHEAST, SOUTHWEST, OTHER_US, NOT_US;
+    NORTHEAST, SOUTHEAST, OTHER_US, NOT_US;
 
 }

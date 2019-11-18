@@ -31,21 +31,21 @@ public class StudentTest extends TestCase {
     /**
      * getRegion test
      */
-    public void testGetRegion{
+    public void testGetRegion(){
         assertEquals(r, s.getRegion());
         
     }
     /**
      * getHobby test
      */
-    public void testGetHobby{
+    public void testGetHobby(){
         assertEquals(hobby, s.getHobby());
         
     }
     /**
      * getMajor test
      */
-    public void testGetMajor{
+    public void testGetMajor(){
         assertEquals(m, s.getMajor());
     }
     
