@@ -19,14 +19,11 @@ public class FileReader {
     private LinkedList<Student> StudentSurvy;
 
 
-<<<<<<< HEAD
-    public FileReader() throws FileNotFoundException {
-=======
     /**
      * constructor
      */
     public FileReader() {
->>>>>>> 754f008906017ce9d4c0a396b7dff4b66ddaa41b
+
         SongList = readSongTitles();
         StudentSurvy = readSurvey();
 
@@ -81,21 +78,63 @@ public class FileReader {
                 }
 
             }
-            LinkedList<String> heardA = new LinkedList<String>();
-            for (int i = 0; i < heard.length; i++)
-            {
-                heardA.add(heard[i]);
+
+            MajorEnum major;
+            char m = tokens[2].trim().charAt(tokens[2].trim().length() - 1);
+            switch (m) {
+
+                case 'i':
+                    major = MajorEnum.COMP_SCI;
+                    break;
+                case 'a':
+                    major = MajorEnum.MATH_CMDA;
+                    break;
+                case 'g':
+                    major = MajorEnum.OTHER_ENG;
+                    break;
+                default:
+                    major = MajorEnum.OTHER;
+                    break;
             }
-            
-            LinkedList<String> likedA = new LinkedList<String>();
-            for (int i = 0; i < liked.length; i++)
-            {
-                likedA.add(heard[i]);
+            RegionEnum region;
+            char r = tokens[3].trim().charAt(2);
+            switch (r) {
+
+                case 'r':
+                    region = RegionEnum.NORTHEAST;
+                    break;
+                case 'u':
+                    region = RegionEnum.SOUTHWEST;
+                    break;
+                case 'h':
+                    region = RegionEnum.OTHER_US;
+                    break;
+                default:
+                    region = RegionEnum.NOT_US;
+                    break;
             }
-            
-            String major = tokens[2].trim();
-            String region = tokens[3].trim();
-            String hobby = tokens[4].trim();
+            HobbyEnum hobby;
+            char h = tokens[4].trim().charAt(0);
+            switch (h) {
+
+                case 'r':
+                    hobby = HobbyEnum.READ;
+                    break;
+                case 'a':
+                    hobby = HobbyEnum.ART;
+                    break;
+                case 's':
+                    hobby = HobbyEnum.SPORTS;
+                    break;
+                default:
+                    hobby = HobbyEnum.MUSIC;
+                    break;
+            }
+            LinkedList<Song> heardA = new LinkedList<Song>();
+
+            LinkedList<Song> likedA = new LinkedList<Song>();
+
+            //
 
             StudentSurvy.add(new Student(major, region, hobby, likedA, heardA));
         }
@@ -118,7 +157,6 @@ public class FileReader {
         while (file.hasNextLine()) {
             String line = file.nextLine();
             String[] tokens = line.split(",");
-            // if no 3 comma
 
             String title = tokens[0].trim();
             String artist = tokens[1].trim();

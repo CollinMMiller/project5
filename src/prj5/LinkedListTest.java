@@ -222,4 +222,176 @@ public class LinkedListTest extends TestCase{
         assertNotNull(e);
         assertTrue(e instanceof IndexOutOfBoundsException);
     }
+    
+    /**
+     * Tests sortByArtist
+     */
+    public void testSortByArtist()
+    {
+        test.sortByArtist();
+        test.add("Hey");
+        test.add("Woah");
+        
+        Exception e = null;
+        
+        try
+        {
+            test.sortByArtist();
+        }
+        catch (Exception x)
+        {
+            e = x;
+        }
+        assertNotNull(e);
+        assertTrue(e instanceof IllegalStateException);
+        
+        Song song1 = new Song("", "B", 0, "");
+        Song song2 = new Song("", "D", 0, "");
+        Song song3 = new Song("", "a", 0, "");
+        Song song4 = new Song("", "t", 0, "");
+        Song song5 = new Song("", "K", 0, "");
+        LinkedList<Song> songs = new LinkedList<Song>();
+        songs.add(song1);
+        songs.add(song2);
+        songs.add(song3);
+        songs.add(song4);
+        songs.add(song5);
+        
+        songs.sortByArtist();
+        
+        assertEquals(song3, songs.get(0));
+        assertEquals(song1, songs.get(1));
+        assertEquals(song2, songs.get(2));
+        assertEquals(song5, songs.get(3));
+        assertEquals(song4, songs.get(4));
+    }
+    
+    /**
+     * Test Sort by Title
+     */
+    public void testSortByTitle()
+    {
+        test.sortByTitle();
+        test.add("Hey");
+        test.add("Woah");
+        
+        Exception e = null;
+        
+        try
+        {
+            test.sortByTitle();
+        }
+        catch (Exception x)
+        {
+            e = x;
+        }
+        assertNotNull(e);
+        assertTrue(e instanceof IllegalStateException);
+        
+        Song song1 = new Song("B", "", 0, "");
+        Song song2 = new Song("D", "", 0, "");
+        Song song3 = new Song("a", "", 0, "");
+        Song song4 = new Song("t", "", 0, "");
+        Song song5 = new Song("K", "", 0, "");
+        LinkedList<Song> songs = new LinkedList<Song>();
+        songs.add(song1);
+        songs.add(song2);
+        songs.add(song3);
+        songs.add(song4);
+        songs.add(song5);
+        
+        songs.sortByTitle();
+        
+        assertEquals(song3, songs.get(0));
+        assertEquals(song1, songs.get(1));
+        assertEquals(song2, songs.get(2));
+        assertEquals(song5, songs.get(3));
+        assertEquals(song4, songs.get(4));
+    }
+    
+    /**
+     * Test sort by year
+     */
+    public void testSortByYear()
+    {
+        test.sortByYear();
+        test.add("Hey");
+        test.add("Woah");
+        
+        Exception e = null;
+        
+        try
+        {
+            test.sortByYear();
+        }
+        catch (Exception x)
+        {
+            e = x;
+        }
+        assertNotNull(e);
+        assertTrue(e instanceof IllegalStateException);
+        
+        Song song1 = new Song("", "", 10, "");
+        Song song2 = new Song("", "", 20, "");
+        Song song3 = new Song("", "", 0, "");
+        Song song4 = new Song("", "", 400, "");
+        Song song5 = new Song("", "", 30, "");
+        LinkedList<Song> songs = new LinkedList<Song>();
+        songs.add(song1);
+        songs.add(song2);
+        songs.add(song3);
+        songs.add(song4);
+        songs.add(song5);
+        
+        songs.sortByYear();
+        
+        assertEquals(song3, songs.get(0));
+        assertEquals(song1, songs.get(1));
+        assertEquals(song2, songs.get(2));
+        assertEquals(song5, songs.get(3));
+        assertEquals(song4, songs.get(4));
+    }
+    
+    /**
+     * Test sort by genre
+     */
+    public void testSortByGenre()
+    {
+        test.sortByGenre();
+        test.add("Hey");
+        test.add("Woah");
+        
+        Exception e = null;
+        
+        try
+        {
+            test.sortByGenre();
+        }
+        catch (Exception x)
+        {
+            e = x;
+        }
+        assertNotNull(e);
+        assertTrue(e instanceof IllegalStateException);
+        
+        Song song1 = new Song("", "", 0, "g");
+        Song song2 = new Song("", "", 0, "Z");
+        Song song3 = new Song("", "", 0, "y");
+        Song song4 = new Song("", "", 0, "l");
+        Song song5 = new Song("", "", 0, "b");
+        LinkedList<Song> songs = new LinkedList<Song>();
+        songs.add(song1);
+        songs.add(song2);
+        songs.add(song3);
+        songs.add(song4);
+        songs.add(song5);
+        
+        songs.sortByGenre();
+        
+        assertEquals(song2, songs.get(0));
+        assertEquals(song5, songs.get(1));
+        assertEquals(song1, songs.get(2));
+        assertEquals(song4, songs.get(3));
+        assertEquals(song3, songs.get(4));
+    }
 }

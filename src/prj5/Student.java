@@ -16,7 +16,7 @@ public class Student {
 
 
     /**
-     * read
+     * Student()
      * 
      * @param major
      *            student's major
@@ -68,5 +68,23 @@ public class Student {
     public HobbyEnum getHobby()
     {
         return hobby;
+    }
+
+    /**
+     * Gets liked Songs
+     * @return liked Songs
+     */
+    public LinkedList<Song> getLiked()
+    {
+        return liked;
+    }
+
+    /**
+     * Gets heard songs
+     * @return heard songs
+     */
+    public LinkedList<Song> getHeard()
+    {
+        return heard;
     }
 }

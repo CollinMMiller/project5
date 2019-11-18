@@ -26,11 +26,19 @@ public class Song {
     /**
      * Number of people who have liked the song
      */
+<<<<<<< HEAD
+    private int[] numberOfLiked;
+    /**
+     * Number of people who have heard the song
+     */
+    private int[] numberOfHeard;
+=======
     private int[] numberOfLiked = new int[4];
     /**
      * Number of people who have heard the song
      */
     private int[] numberOfHeard = new int[4];
+>>>>>>> 610a7f8bf29fe327ecf438a6f1bad6766715bc77
     
     /**
      * Creates a new Song
@@ -98,7 +106,11 @@ public class Song {
      * Returns the number of people who have liked the song
      * @return Number of people who have liked the song
      */
+<<<<<<< HEAD
     public int[] getLiked()
+=======
+    public int getLiked(int index, int liked)
+>>>>>>> 610a7f8bf29fe327ecf438a6f1bad6766715bc77
     {
         
         return numberOfLiked;
@@ -120,23 +132,5 @@ public class Song {
     public int[] getHeard()
     {
         return numberOfHeard;
-    }
-
-    /**
-     * Increments a value of liked
-     * @param index which major/region/hobby
-     */
-    public void incrementLiked(int index)
-    {
-        numberOfLiked[index]++;
-    }
-
-    /**
-     * Increments a value of heard
-     * @param index which major/region/hobby
-     */
-    public void incrementHeard(int index)
-    {
-        numberOfHeard[index]++;
     }
 }
