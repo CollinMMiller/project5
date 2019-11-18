@@ -60,8 +60,14 @@ public class SongTest extends TestCase {
      */
     public void testGetLiked()
     {
-        misery_Business.setLiked(2464000);
-        assertEquals(2464000, misery_Business.getLiked());
+        misery_Business.setLiked(0, 10);
+        assertEquals(10, misery_Business.getLiked()[0]);
+        misery_Business.setLiked(1, 10);
+        assertEquals(10, misery_Business.getLiked()[1]);
+        misery_Business.setLiked(2, 10);
+        assertEquals(10, misery_Business.getLiked()[2]);
+        misery_Business.setLiked(3, 10);
+        assertEquals(10, misery_Business.getLiked()[3]);
     }
     
     /**
@@ -69,8 +75,28 @@ public class SongTest extends TestCase {
      */
     public void testGetHeard()
     {
-        misery_Business.setHeard(8030055);
-        assertEquals(8030055, misery_Business.getHeard());
+        misery_Business.setHeard(0, 10);
+        assertEquals(10, misery_Business.getHeard()[0]);
+        misery_Business.setHeard(1, 10);
+        assertEquals(10, misery_Business.getHeard()[1]);
+        misery_Business.setHeard(2, 10);
+        assertEquals(10, misery_Business.getHeard()[2]);
+        misery_Business.setHeard(3, 10);
+        assertEquals(10, misery_Business.getHeard()[3]);
+    }
+    
+    /**
+     * Tests incrementHeard and incrementLiked methods
+     */
+    public void testIncrementMethods()
+    {
+        assertEquals(0, misery_Business.getHeard()[0]);
+        misery_Business.incrementHeard(0);
+        assertEquals(1, misery_Business.getHeard()[0]);
+        
+        assertEquals(0, misery_Business.getLiked()[0]);
+        misery_Business.incrementLiked(0);
+        assertEquals(1, misery_Business.getLiked()[0]);
     }
 
 }

@@ -2,7 +2,6 @@ package prj5;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.List;
 
 /**
  * Implementation of a LinkedList
@@ -10,11 +9,7 @@ import java.util.List;
  * @version 2019.11.17
  * @param <E> The type of object that the class will store
  */
-<<<<<<< HEAD
-public class LinkedList<E> {
-=======
 public class LinkedList<E> implements Iterable<E>{
->>>>>>> 7d7cede03194c1d2de6d5abd016f1a406ef1082a
     
     /**
      * Size of the LinkedList

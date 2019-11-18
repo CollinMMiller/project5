@@ -14,7 +14,6 @@ public class Student {
     private LinkedList<Song> liked;
     private LinkedList<Song> heard;
 
-
     /**
      * Student()
      * 

@@ -34,11 +34,9 @@ public class SongStudentDataBase
      * getSongsByMajor
      * liked songs and heard songs in each major
      * 
-     * @param major
-     *            student's major
      * @return LinkedList<Song>
      */
-    public LinkedList<Song> getSongsByMajor(MajorEnum major)
+    public LinkedList<Song> getSongsByMajor()
     {
         for (Song song : songs)
         {
@@ -67,11 +65,9 @@ public class SongStudentDataBase
      * getSongsByRegion
      * liked songs and heard songs in each region
      * 
-     * @param region
-     *            student's region
      * @return LinkedList<Song>
      */
-    public LinkedList<Song> getSongsByRegion(RegionEnum region)
+    public LinkedList<Song> getSongsByRegion()
     {
         for (Song song : songs)
         {
@@ -100,11 +96,9 @@ public class SongStudentDataBase
      * getSongsByHobby
      * liked songs and heard songs in each hobby
      * 
-     * @param hobby
-     *            student's hobby
      * @return LinkedList<Song>
      */
-    public LinkedList<Song> getSongsByHobby(HobbyEnum hobby)
+    public LinkedList<Song> getSongsByHobby()
     {
         for (Song song : songs)
         {

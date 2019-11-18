@@ -25,6 +25,8 @@ public class StudentTest extends TestCase
      */
     public void setUp()
     {
+        h = new LinkedList<Song>();
+        l = new LinkedList<Song>();
         h.add(new Song("t", "a", 2015, "G"));
         l.add(new Song("t", "a", 2015, "G"));
         s = new Student(m, r, hobby, h, l);
@@ -35,34 +37,15 @@ public class StudentTest extends TestCase
     /**
      * getRegion test
      */
-<<<<<<< HEAD
     public void testGetRegion(){
-=======
-<<<<<<< HEAD
-    public void testGetRegion()
-    {
-=======
-    public void testGetRegion(){
->>>>>>> 593cdb1aa7871d2d5da83adfc7bb80f6c8ede34d
->>>>>>> 7d7cede03194c1d2de6d5abd016f1a406ef1082a
         assertEquals(r, s.getRegion());
-
     }
 
 
     /**
      * getHobby test
      */
-<<<<<<< HEAD
     public void testGetHobby(){
-=======
-<<<<<<< HEAD
-    public void testGetHobby()
-    {
-=======
-    public void testGetHobby(){
->>>>>>> 593cdb1aa7871d2d5da83adfc7bb80f6c8ede34d
->>>>>>> 7d7cede03194c1d2de6d5abd016f1a406ef1082a
         assertEquals(hobby, s.getHobby());
 
     }
@@ -71,16 +54,7 @@ public class StudentTest extends TestCase
     /**
      * getMajor test
      */
-<<<<<<< HEAD
     public void testGetMajor(){
-=======
-<<<<<<< HEAD
-    public void testGetMajor()
-    {
-=======
-    public void testGetMajor(){
->>>>>>> 593cdb1aa7871d2d5da83adfc7bb80f6c8ede34d
->>>>>>> 7d7cede03194c1d2de6d5abd016f1a406ef1082a
         assertEquals(m, s.getMajor());
     }
 
