@@ -47,6 +47,10 @@ public class SongStudentDataBase
             }
             for (Student stu : students)
             {
+                if (stu.getMajor() == null)
+                {
+                    continue;
+                }
                 if (stu.getLiked().contains(song))
                 {
                     song.incrementLiked(stu.getMajor().ordinal());
@@ -78,6 +82,10 @@ public class SongStudentDataBase
             }
             for (Student stu : students)
             {
+                if (stu.getRegion() == null)
+                {
+                    continue;
+                }
                 if (stu.getLiked().contains(song))
                 {
                     song.incrementLiked(stu.getRegion().ordinal());
@@ -109,6 +117,10 @@ public class SongStudentDataBase
             }
             for (Student stu : students)
             {
+                if (stu.getHobby() == null)
+                {
+                    continue;
+                }
                 if (stu.getLiked().contains(song))
                 {
                     song.incrementLiked(stu.getHobby().ordinal());

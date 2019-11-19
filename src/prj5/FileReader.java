@@ -16,7 +16,7 @@ public class FileReader
     private String songTitlesPath;
     private String surveyPath;
     private LinkedList<Song> songList;
-    private LinkedList<Student> studentSurvy;
+    private LinkedList<Student> studentSurvey;
 
 
     /**
@@ -24,11 +24,13 @@ public class FileReader
      * 
      * @throws FileNotFoundException
      */
-    public FileReader() throws FileNotFoundException
+    public FileReader(String surveyPath, String songPath)
+        throws FileNotFoundException
     {
-
+        this.songTitlesPath = songPath;
+        this.surveyPath = surveyPath;
         songList = readSongTitles();
-        studentSurvy = readSurvey();
+        studentSurvey = readSurvey();
 
     }
 
@@ -100,7 +102,11 @@ public class FileReader
         }
     }
 
-
+    /**
+     * Reads the survey file
+     * @return LinkedList of students
+     * @throws FileNotFoundException If file is not found
+     */
     private LinkedList<Student> readSurvey() throws FileNotFoundException
     {
         LinkedList<Student> students = new LinkedList<Student>();
@@ -133,7 +139,7 @@ public class FileReader
             }
             Student student = new Student(getMajor(tokens[2]), getRegion(
                 tokens[3]), getHobby(tokens[4]), heard, liked);
-            studentSurvy.add(student);
+            students.add(student);
         }
         scanner.close();
         return students;
@@ -142,8 +148,8 @@ public class FileReader
 
     /**
      * readSongTitles
-     * 
      * @return LinkedList<Song>
+     * @throws FileNotFoundException when file is not found
      */
     private LinkedList<Song> readSongTitles() throws FileNotFoundException
     {
@@ -168,4 +174,50 @@ public class FileReader
         return songList;
     }
 
+    /**
+     * Returns a database containing the songs and students
+     * @return a database containing the songs and students
+     */
+    public SongStudentDataBase createDatabase()
+    {
+        SongStudentDataBase db = 
+            new SongStudentDataBase(songList, studentSurvey);
+        LinkedList<Song> songs = db.getSongsByHobby();
+        songs.sortByGenre();
+        for (Song song : songs)
+        {
+            printSongData(song);
+        }
+
+        songs.sortByTitle();
+        for (Song song : songs)
+        {
+            printSongData(song);
+        }
+        return db;
+    }
+    
+    private void printSongData(Song song)
+    {
+        System.out.println("Song Title: " + song.getTitle());
+        System.out.println("Song Artist: " + song.getArtist());
+        System.out.println("Song Genre: " + song.getGenre());
+        System.out.println("Song Year: " + song.getYear());
+        System.out.println("Heard");
+        
+        int[] heard = song.getHeard();
+        int totalStu = studentSurvey.size();
+        System.out.println("reading:" + heard[0] * 100 / totalStu +
+            " art:" + heard[1] * 100 / totalStu +
+            " sports:" + heard[2] * 100 / totalStu +
+            " music:" + heard[3] * 100 / totalStu);
+        
+        System.out.println("Likes");
+        int[] likes = song.getLiked();
+        System.out.println("reading:" + likes[0] * 100 / totalStu +
+            " art:" + likes[1] * 100 / totalStu +
+            " sports:" + likes[2] * 100 / totalStu +
+            " music:" + likes[3] * 100 / totalStu);
+        System.out.println();
+    }
 }

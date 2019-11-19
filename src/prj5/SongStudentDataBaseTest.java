@@ -13,6 +13,7 @@ public class SongStudentDataBaseTest extends TestCase
 
     private Student stu1;
     private Student stu2;
+    private Student stu3;
 
     private SongStudentDataBase db;
 
@@ -56,6 +57,8 @@ public class SongStudentDataBaseTest extends TestCase
         stu2 = new Student(MajorEnum.OTHER, RegionEnum.NOT_US, HobbyEnum.MUSIC,
             list3, list4);
 
+        stu3 = new Student(null, null, null, null, null);
+        
         LinkedList<Song> songs = new LinkedList<Song>();
         songs.add(song1);
         songs.add(song2);
@@ -63,11 +66,12 @@ public class SongStudentDataBaseTest extends TestCase
         songs.add(song4);
         songs.add(song5);
         songs.add(song6);
-
+        
         LinkedList<Student> students = new LinkedList<Student>();
         students.add(stu1);
         students.add(stu2);
-
+        students.add(stu3);
+        
         db = new SongStudentDataBase(songs, students);
     }
 
@@ -166,5 +170,6 @@ public class SongStudentDataBaseTest extends TestCase
     {
         assertEquals(stu1, db.getStudents().get(0));
         assertEquals(stu2, db.getStudents().get(1));
+        assertEquals(stu3, db.getStudents().get(2));
     }
 }
