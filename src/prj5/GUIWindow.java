@@ -1,7 +1,6 @@
 package prj5;
 
 import java.awt.Color;
-import java.util.List;
 import CS2114.Button;
 import CS2114.Shape;
 import CS2114.TextShape;
@@ -21,7 +20,7 @@ public class GUIWindow {
     /**
      * Database of the Students songs
      */
-    private StudentSongDatabase database;
+    private SongStudentDataBase database;
     /**
      * Window to display it in
      */
@@ -43,7 +42,7 @@ public class GUIWindow {
      * Creates a window with the given database
      * @param db Database of student songs
      */
-    public GUIWindow(StudentSongDatabase db)
+    public GUIWindow(SongStudentDataBase db)
     {
         database = db;
         window = new Window();
