@@ -94,10 +94,17 @@ public class GUIWindow {
     {
         LinkedList<Song> songs = new LinkedList<Song>();
         LinkedList<Student> students = new LinkedList<Student>();
-        songs.add(new Song("Flowers", "Iann Dior", 2019, "Pop"));
-        songs.add(new Song("Test", "Test", 2019, "Test"));
-        songs.add(new Song("Call Me", "Blondie", 2019, "Rap"));
-        students.add(new Student(MajorEnum.COMP_SCI, RegionEnum.SOUTHEAST, HobbyEnum.ART, songs, songs));
+        Song a = new Song("Flowers", "Iann Dior", 2019, "Pop");
+        Song b = new Song("Call Me", "Blondie", 2009, "Rap");
+        songs.add(a);
+        songs.add(b);
+        for (int i = 0; i < 7; i++)
+        {
+            songs.add(new Song("Mr. Brightside", "The Killers", 2007,
+                "Alternative"));
+        }
+        students.add(new Student(MajorEnum.COMP_SCI, RegionEnum.SOUTHEAST,
+            HobbyEnum.ART, songs, songs));
         SongStudentDataBase s = new SongStudentDataBase(songs, students);
         //StudentSongDatabase s = new StudentSongDatabase();
         GUIWindow f = new GUIWindow(s);
@@ -150,7 +157,7 @@ public class GUIWindow {
     public void sortByGenre(Button button)
     {
         LinkedList<Song> hobbies = database.getSongsByHobby();
-        hobbies.sortByGenre();
+        //hobbies.sortByGenre();
         displayPage(hobbies);
     }
 
@@ -242,6 +249,12 @@ public class GUIWindow {
         window.addShape(music);
         music.setBackgroundColor(transparent);
         window.moveToFront(music);
+        
+        
+        
+        LinkedList<Song> hobbies = database.getSongsByHobby();
+        hobbies.sortByGenre();
+        displayPage(hobbies);
         
     }
     
