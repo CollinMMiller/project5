@@ -2,7 +2,6 @@ package prj5;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
@@ -11,136 +10,125 @@ import java.util.Scanner;
  * @author <Zoe Zheng> <zoez>
  * @version <11/17/2019>
  */
-public class FileReader {
+public class FileReader
+{
 
-    private String SongTitlesPath;
+    private String songTitlesPath;
     private String surveyPath;
-    private LinkedList<Song> SongList;
-    private LinkedList<Student> StudentSurvy;
+    private LinkedList<Song> songList;
+    private LinkedList<Student> studentSurvy;
 
 
     /**
      * constructor
+     * 
+     * @throws FileNotFoundException
      */
-    public FileReader() {
+    public FileReader() throws FileNotFoundException
+    {
 
-        SongList = readSongTitles();
-        StudentSurvy = readSurvey();
+        songList = readSongTitles();
+        studentSurvy = readSurvey();
 
     }
-
-
+    
     /**
-     * readSurvey
-     * 
-     * @return LinkedList<Student>
+     * Returns major as enum
+     * @param major major as String
+     * @return major as enum
      */
-    private LinkedList<Student> readSurvey() {
-        StudentSurvy = new LinkedList<Student>();
-        File newFile = new File(surveyPath);
-        Scanner file = new Scanner(newFile);
-        // not read the first line
-        String s = file.nextLine();
-        while (file.hasNextLine()) {
-            String line = file.nextLine();
-
-            String[] tokens = line.split(",");
-            // if no 72 comma
-
-            String heard[] = new String[34];// hold 67 survey questions
-            String liked[] = new String[34];
-            // if anwser is blank, make it to no
-            for (int i = 5; i <= 72; i++) {
-                if ((i % 2) == 1) {
-                    // heard
-
-                    for (int j = 0; j < 34; j++) {
-                        String a = "No";
-                        if (String.valueOf(tokens[i].trim()) != "Yes") {
-                            // make it to No
-                            a = tokens[i].trim();
-
-                        }
-                        heard[j] = String.valueOf(tokens[i].trim());
-                    }
-                }
-                else if ((i % 2) == 0) {
-                    // liked
-
-                    for (int j = 0; j < 34; j++) {
-                        String a = "No";
-                        if (String.valueOf(tokens[i].trim()) != "Yes") {
-                            // make it to No
-
-                        }
-                        liked[j] = String.valueOf(tokens[i].trim());
-                    }
-                }
-
-            }
-
-            MajorEnum major;
-            char m = tokens[2].trim().charAt(tokens[2].trim().length() - 1);
-            switch (m) {
-
-                case 'i':
-                    major = MajorEnum.COMP_SCI;
-                    break;
-                case 'a':
-                    major = MajorEnum.MATH_CMDA;
-                    break;
-                case 'g':
-                    major = MajorEnum.OTHER_ENG;
-                    break;
-                default:
-                    major = MajorEnum.OTHER;
-                    break;
-            }
-            RegionEnum region;
-            char r = tokens[3].trim().charAt(2);
-            switch (r) {
-
-                case 'r':
-                    region = RegionEnum.NORTHEAST;
-                    break;
-                case 'u':
-                    region = RegionEnum.SOUTHWEST;
-                    break;
-                case 'h':
-                    region = RegionEnum.OTHER_US;
-                    break;
-                default:
-                    region = RegionEnum.NOT_US;
-                    break;
-            }
-            HobbyEnum hobby;
-            char h = tokens[4].trim().charAt(0);
-            switch (h) {
-
-                case 'r':
-                    hobby = HobbyEnum.READ;
-                    break;
-                case 'a':
-                    hobby = HobbyEnum.ART;
-                    break;
-                case 's':
-                    hobby = HobbyEnum.SPORTS;
-                    break;
-                default:
-                    hobby = HobbyEnum.MUSIC;
-                    break;
-            }
-            LinkedList<Song> heardA = new LinkedList<Song>();
-
-            LinkedList<Song> likedA = new LinkedList<Song>();
-
-            //
-
-            StudentSurvy.add(new Student(major, region, hobby, likedA, heardA));
+    private MajorEnum getMajor(String major)
+    {
+        switch (major)
+        {
+            case "Computer Science":
+                return MajorEnum.COMP_SCI;
+            case "Math or CMDA":
+                return MajorEnum.MATH_CMDA;
+            case "Other Engineering":
+                return MajorEnum.OTHER_ENG;
+            case "Other":
+                return MajorEnum.OTHER;
+            default:
+                return null;
         }
+    }
+    
+    /**
+     * Returns region as enum
+     * @param region region as String
+     * @return region as enum
+     */
+    private RegionEnum getRegion(String region)
+    {
+        switch (region)
+        {
+            case "Northeast":
+                return RegionEnum.NORTHEAST;
+            case "Southeast":
+                return RegionEnum.SOUTHEAST;
+            case "United States (other than Southeast or Northwest)":
+                return RegionEnum.OTHER_US;
+            case "Outside of United States":
+                return RegionEnum.NOT_US;
+            default:
+                return null;
+        }
+    }
 
-        return StudentSurvy;
-
+    private HobbyEnum getHobby(String hobby)
+    {
+        switch (hobby)
+        {
+            case "reading":
+                return HobbyEnum.READ;
+            case "art":
+                return HobbyEnum.ART;
+            case "sports":
+                return HobbyEnum.SPORTS;
+            case "music":
+                return HobbyEnum.MUSIC;
+            default:
+                return null;
+        }
+    }
+    
+    private LinkedList<Student> readSurvey() throws FileNotFoundException
+    {
+        LinkedList<Student> students = new LinkedList<Student>();
+        Scanner scanner = new Scanner(new File(surveyPath));
+        scanner.nextLine(); //Skips the first line
+        
+        while (scanner.hasNextLine())
+        {
+            String[] tokens = scanner.nextLine().split(",");
+            
+            LinkedList<Song> heard = new LinkedList<Song>();
+            LinkedList<Song> liked = new LinkedList<Song>(); 
+            
+            for (int i = 5; i < tokens.length; i++)
+            {
+                String response = tokens[i];
+                int songNum = (i - 5) / 2;
+                
+                if (response.equals("Yes"))
+                {
+                    if (i % 2 == 1)
+                    {
+                        heard.add(songList.get(songNum));
+                    }
+                    else
+                    {
+                        liked.add(songList.get(songNum));
+                    }
+                }
+            }
+            Student student = new Student(getMajor(tokens[2]),
+                getRegion(tokens[3]), getHobby(tokens[4]), heard, liked);
+            studentSurvy.add(student);
+        }
+        scanner.close();
+        return students;
     }
 
 
@@ -149,12 +137,14 @@ public class FileReader {
      * 
      * @return LinkedList<Song>
      */
-    private LinkedList<Song> readSongTitles() throws FileNotFoundException {
-        SongList = new LinkedList<Song>();
-        File newFile = new File(SongTitlesPath);
+    private LinkedList<Song> readSongTitles() throws FileNotFoundException
+    {
+        songList = new LinkedList<Song>();
+        File newFile = new File(songTitlesPath);
         Scanner file = new Scanner(newFile);
-        String s = file.nextLine();
-        while (file.hasNextLine()) {
+        file.nextLine();
+        while (file.hasNextLine())
+        {
             String line = file.nextLine();
             String[] tokens = line.split(",");
 
@@ -163,11 +153,11 @@ public class FileReader {
             int year = Integer.valueOf(tokens[2].trim());
             String genre = tokens[3].trim();
 
-            SongList.add(new Song(title, artist, year, genre));
+            songList.add(new Song(title, artist, year, genre));
         }
+        file.close();
 
-        return SongList;
-
+        return songList;
     }
 
 }
