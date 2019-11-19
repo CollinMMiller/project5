@@ -20,8 +20,21 @@ public class GUIGlyph {
         studentsTotal = totalStudents;
     }
     
-    public void displayGlyphs(int page, Window window, List<Song> songs)
+    public void displayGlyphs(int page, Window window, LinkedList<Song> songs)
     {
+        //System.out.println(songs.);
+        for (int i = 0; i < songs.size(); i++)
+        {
+            System.out.println(i);
+            System.out.println(songs.get(i).getTitle());
+            TextShape title = new TextShape(15 * (i+1), 15, songs.get(i).getTitle());
+            songTitleText[i] = title;
+            TextShape artist = new TextShape(15 * (i+1), 30, "by " + 
+            songs.get(i).getArtist());
+            songArtistText[i] = artist;
+            window.addShape(artist);
+            window.addShape(title);
+        }
         
     }
 }

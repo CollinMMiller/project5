@@ -8,6 +8,12 @@ import CS2114.TextShape;
 import CS2114.Window;
 import CS2114.WindowSide;
 
+/**
+ * Creates the window to display information
+ * @author Callie Louderback (calliel)
+ * @version 2019.11.18
+ *
+ */
 public class GUIWindow {
 
     /**
@@ -17,11 +23,11 @@ public class GUIWindow {
     /**
      * List of songs
      */
-    private List<Song> songs;
+    private LinkedList<Song> songs;
     /**
      * Database of the Students songs
      */
-    private StudentSongDatabase database;
+    private SongStudentDataBase database;
     /**
      * Window to display it in
      */
@@ -43,9 +49,10 @@ public class GUIWindow {
      * Creates a window with the given database
      * @param db Database of student songs
      */
-    public GUIWindow(StudentSongDatabase db)
+    public GUIWindow(SongStudentDataBase db)
     {
         database = db;
+        //this.songs = db.getStudents().
         window = new Window();
         window.setTitle("Project 5: calliel, collinm2, zoez");
         Button hobby = new Button("Represent Hobby");
@@ -79,17 +86,22 @@ public class GUIWindow {
         window.addButton(next, WindowSide.NORTH);
         next.onClick(this, "buttonNext");
         previous.disable();
-        if (Math.ceil(songs.size() / 9) < 2)
-        {
-            next.disable();
-        }
+        
+        
         
     }
     
     public static void main(String args[])
     {
+        LinkedList<Song> songs = new LinkedList<Song>();
+        LinkedList<Student> students = new LinkedList<Student>();
+        songs.add(new Song("Flowers", "Iann Dior", 2019, "Pop"));
+        songs.add(new Song("Test", "Test", 2019, "Test"));
+        songs.add(new Song("Call Me", "Blondie", 2019, "Rap"));
+        students.add(new Student(MajorEnum.COMP_SCI, RegionEnum.SOUTHEAST, HobbyEnum.ART, songs, songs));
+        SongStudentDataBase s = new SongStudentDataBase(songs, students);
         //StudentSongDatabase s = new StudentSongDatabase();
-        GUIWindow f = new GUIWindow(null);
+        GUIWindow f = new GUIWindow(s);
     }
     
     /**
@@ -138,7 +150,9 @@ public class GUIWindow {
      */
     public void sortByGenre(Button button)
     {
-        
+        LinkedList<Song> hobbies = database.getSongsByHobby();
+        hobbies.sortByGenre();
+        displayPage(hobbies);
     }
 
     /**
@@ -158,9 +172,16 @@ public class GUIWindow {
      * 
      * @param songOnPage
      */
-    public void displayPage(List<Song> songOnPage)
+    public void displayPage(LinkedList<Song> songOnPage)
     {
         //calls gui glyph
+        this.songs = songOnPage;
+        if (Math.ceil(songs.size() / 9) < 2)
+        {
+            next.disable();
+        }
+        GUIGlyph display = new GUIGlyph(database.getStudents().size());
+        display.displayGlyphs(page, window, songs);
     }
     
     /**
