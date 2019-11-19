@@ -5,16 +5,19 @@ import student.TestCase;
 
 /**
  * Tests the LinkedList class
+ * 
  * @author Callie Louderback(calliel)
  * @version 2019.11.17
  */
-public class LinkedListTest extends TestCase{
+public class LinkedListTest extends TestCase
+{
 
     /**
      * LinkedList to test with
      */
     LinkedList<String> test;
-    
+
+
     /**
      * Sets up the test LinkedList
      */
@@ -22,7 +25,8 @@ public class LinkedListTest extends TestCase{
     {
         test = new LinkedList<String>();
     }
-    
+
+
     /**
      * Tests the size() method
      */
@@ -42,9 +46,10 @@ public class LinkedListTest extends TestCase{
             e = exception;
         }
         assertNotNull(e);
-        assertEquals(2, test.size()); 
+        assertEquals(2, test.size());
     }
-    
+
+
     /**
      * Tests isEmpty()
      */
@@ -54,7 +59,8 @@ public class LinkedListTest extends TestCase{
         test.add("Test");
         assertFalse(test.isEmpty());
     }
-    
+
+
     /**
      * Tests remove()
      */
@@ -97,7 +103,8 @@ public class LinkedListTest extends TestCase{
         }
         assertNotNull(e);
     }
-    
+
+
     /**
      * Tests get()
      */
@@ -117,7 +124,8 @@ public class LinkedListTest extends TestCase{
         test.add("B");
         assertEquals("B", test.get(1));
     }
-    
+
+
     /**
      * Tests contains()
      */
@@ -130,7 +138,8 @@ public class LinkedListTest extends TestCase{
         test.clear();
         assertFalse(test.contains("A"));
     }
-    
+
+
     /**
      * Tests lastIndexOf()
      */
@@ -139,20 +148,25 @@ public class LinkedListTest extends TestCase{
         assertEquals(-1, test.lastIndexOf("A"));
         test.add("B");
         test.add("B");
+        test.add("C");
         assertEquals(1, test.lastIndexOf("B"));
     }
-    
+
+
     /**
      * Tests toString()
      */
     public void testToString()
     {
+        assertEquals("[]", test.toString());
+
         test.add("A");
         test.add("B");
         test.add("C");
-        assertEquals("{A, B, C}", test.toString());
+        assertEquals("[A, B, C]", test.toString());
     }
-    
+
+
     // implements comparable
     /**
      * Tests the Iterator
@@ -187,7 +201,8 @@ public class LinkedListTest extends TestCase{
         }
         assertNotNull(e);
     }
-    
+
+
     public void testAddInsert()
     {
         test.add("test");
@@ -197,7 +212,7 @@ public class LinkedListTest extends TestCase{
         assertEquals("Test3", test.get(1));
         test.add(3, "last");
         assertEquals("last", test.get(3));
-        
+
         Exception e = null;
         try
         {
@@ -209,7 +224,7 @@ public class LinkedListTest extends TestCase{
         }
         assertNotNull(e);
         assertTrue(e instanceof IndexOutOfBoundsException);
-        
+
         e = null;
         try
         {
@@ -222,7 +237,8 @@ public class LinkedListTest extends TestCase{
         assertNotNull(e);
         assertTrue(e instanceof IndexOutOfBoundsException);
     }
-    
+
+
     /**
      * Tests sortByArtist
      */
@@ -231,9 +247,9 @@ public class LinkedListTest extends TestCase{
         test.sortByArtist();
         test.add("Hey");
         test.add("Woah");
-        
+
         Exception e = null;
-        
+
         try
         {
             test.sortByArtist();
@@ -244,7 +260,7 @@ public class LinkedListTest extends TestCase{
         }
         assertNotNull(e);
         assertTrue(e instanceof IllegalStateException);
-        
+
         Song song1 = new Song("", "B", 0, "");
         Song song2 = new Song("", "D", 0, "");
         Song song3 = new Song("", "a", 0, "");
@@ -256,16 +272,17 @@ public class LinkedListTest extends TestCase{
         songs.add(song3);
         songs.add(song4);
         songs.add(song5);
-        
+
         songs.sortByArtist();
-        
+
         assertEquals(song3, songs.get(0));
         assertEquals(song1, songs.get(1));
         assertEquals(song2, songs.get(2));
         assertEquals(song5, songs.get(3));
         assertEquals(song4, songs.get(4));
     }
-    
+
+
     /**
      * Test Sort by Title
      */
@@ -274,9 +291,9 @@ public class LinkedListTest extends TestCase{
         test.sortByTitle();
         test.add("Hey");
         test.add("Woah");
-        
+
         Exception e = null;
-        
+
         try
         {
             test.sortByTitle();
@@ -287,7 +304,7 @@ public class LinkedListTest extends TestCase{
         }
         assertNotNull(e);
         assertTrue(e instanceof IllegalStateException);
-        
+
         Song song1 = new Song("B", "", 0, "");
         Song song2 = new Song("D", "", 0, "");
         Song song3 = new Song("a", "", 0, "");
@@ -299,16 +316,17 @@ public class LinkedListTest extends TestCase{
         songs.add(song3);
         songs.add(song4);
         songs.add(song5);
-        
+
         songs.sortByTitle();
-        
+
         assertEquals(song3, songs.get(0));
         assertEquals(song1, songs.get(1));
         assertEquals(song2, songs.get(2));
         assertEquals(song5, songs.get(3));
         assertEquals(song4, songs.get(4));
     }
-    
+
+
     /**
      * Test sort by year
      */
@@ -317,9 +335,9 @@ public class LinkedListTest extends TestCase{
         test.sortByYear();
         test.add("Hey");
         test.add("Woah");
-        
+
         Exception e = null;
-        
+
         try
         {
             test.sortByYear();
@@ -330,7 +348,7 @@ public class LinkedListTest extends TestCase{
         }
         assertNotNull(e);
         assertTrue(e instanceof IllegalStateException);
-        
+
         Song song1 = new Song("", "", 10, "");
         Song song2 = new Song("", "", 20, "");
         Song song3 = new Song("", "", 0, "");
@@ -342,16 +360,17 @@ public class LinkedListTest extends TestCase{
         songs.add(song3);
         songs.add(song4);
         songs.add(song5);
-        
+
         songs.sortByYear();
-        
+
         assertEquals(song3, songs.get(0));
         assertEquals(song1, songs.get(1));
         assertEquals(song2, songs.get(2));
         assertEquals(song5, songs.get(3));
         assertEquals(song4, songs.get(4));
     }
-    
+
+
     /**
      * Test sort by genre
      */
@@ -360,9 +379,9 @@ public class LinkedListTest extends TestCase{
         test.sortByGenre();
         test.add("Hey");
         test.add("Woah");
-        
+
         Exception e = null;
-        
+
         try
         {
             test.sortByGenre();
@@ -373,7 +392,7 @@ public class LinkedListTest extends TestCase{
         }
         assertNotNull(e);
         assertTrue(e instanceof IllegalStateException);
-        
+
         Song song1 = new Song("", "", 0, "g");
         Song song2 = new Song("", "", 0, "Z");
         Song song3 = new Song("", "", 0, "y");
@@ -385,9 +404,9 @@ public class LinkedListTest extends TestCase{
         songs.add(song3);
         songs.add(song4);
         songs.add(song5);
-        
+
         songs.sortByGenre();
-        
+
         assertEquals(song2, songs.get(0));
         assertEquals(song5, songs.get(1));
         assertEquals(song1, songs.get(2));

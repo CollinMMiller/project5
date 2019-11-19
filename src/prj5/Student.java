@@ -6,13 +6,15 @@ package prj5;
  * @author <Zoe Zheng> <zoez>
  * @version <11/17/2019>
  */
-public class Student {
+public class Student
+{
 
     private MajorEnum major;
     private RegionEnum region;
     private HobbyEnum hobby;
-    private LinkedList<Song> liked;
     private LinkedList<Song> heard;
+    private LinkedList<Song> liked;
+
 
     /**
      * Student()
@@ -33,7 +35,8 @@ public class Student {
         RegionEnum region,
         HobbyEnum hobby,
         LinkedList<Song> heard,
-        LinkedList<Song> liked) {
+        LinkedList<Song> liked)
+    {
 
         this.major = major;
         this.region = region;
@@ -43,8 +46,10 @@ public class Student {
 
     }
 
+
     /**
      * getMajor
+     * 
      * @return MajorEnum
      */
     public MajorEnum getMajor()
@@ -52,16 +57,22 @@ public class Student {
         return major;
 
     }
+
+
     /**
      * getRegion
+     * 
      * @return RegionEnum
      */
     public RegionEnum getRegion()
     {
         return region;
     }
+
+
     /**
      * getHobby
+     * 
      * @return HobbyEnum
      */
     public HobbyEnum getHobby()
@@ -69,8 +80,10 @@ public class Student {
         return hobby;
     }
 
+
     /**
      * Gets liked Songs
+     * 
      * @return liked Songs
      */
     public LinkedList<Song> getLiked()
@@ -78,8 +91,10 @@ public class Student {
         return liked;
     }
 
+
     /**
      * Gets heard songs
+     * 
      * @return heard songs
      */
     public LinkedList<Song> getHeard()

@@ -3,7 +3,7 @@ package prj5;
 /**
  * SongStudentDataBase class
  *
- * @author <Zoe Zheng> <zoez>
+ * @author <Zoe Zheng> <zoez>, Collin Miller (collinm2)
  * @version <11/17/2019>
  */
 public class SongStudentDataBase

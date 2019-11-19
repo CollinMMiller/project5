@@ -31,10 +31,13 @@ public class FileReader
         studentSurvy = readSurvey();
 
     }
-    
+
+
     /**
      * Returns major as enum
-     * @param major major as String
+     * 
+     * @param major
+     *            major as String
      * @return major as enum
      */
     private MajorEnum getMajor(String major)
@@ -53,10 +56,13 @@ public class FileReader
                 return null;
         }
     }
-    
+
+
     /**
      * Returns region as enum
-     * @param region region as String
+     * 
+     * @param region
+     *            region as String
      * @return region as enum
      */
     private RegionEnum getRegion(String region)
@@ -76,6 +82,7 @@ public class FileReader
         }
     }
 
+
     private HobbyEnum getHobby(String hobby)
     {
         switch (hobby)
@@ -92,25 +99,26 @@ public class FileReader
                 return null;
         }
     }
-    
+
+
     private LinkedList<Student> readSurvey() throws FileNotFoundException
     {
         LinkedList<Student> students = new LinkedList<Student>();
         Scanner scanner = new Scanner(new File(surveyPath));
-        scanner.nextLine(); //Skips the first line
-        
+        scanner.nextLine(); // Skips the first line
+
         while (scanner.hasNextLine())
         {
             String[] tokens = scanner.nextLine().split(",");
-            
+
             LinkedList<Song> heard = new LinkedList<Song>();
-            LinkedList<Song> liked = new LinkedList<Song>(); 
-            
+            LinkedList<Song> liked = new LinkedList<Song>();
+
             for (int i = 5; i < tokens.length; i++)
             {
                 String response = tokens[i];
                 int songNum = (i - 5) / 2;
-                
+
                 if (response.equals("Yes"))
                 {
                     if (i % 2 == 1)
@@ -123,8 +131,8 @@ public class FileReader
                     }
                 }
             }
-            Student student = new Student(getMajor(tokens[2]),
-                getRegion(tokens[3]), getHobby(tokens[4]), heard, liked);
+            Student student = new Student(getMajor(tokens[2]), getRegion(
+                tokens[3]), getHobby(tokens[4]), heard, liked);
             studentSurvy.add(student);
         }
         scanner.close();
