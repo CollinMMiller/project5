@@ -1,16 +1,21 @@
 package prj5;
 
 import java.awt.Color;
-import java.util.List;
 import CS2114.Shape;
 import CS2114.TextShape;
 import CS2114.Window;
 
+/**
+ * Displays glyphs
+ * 
+ * @author Callie Louderback (Calliel)
+ * @version 2019.11.18
+ */
 public class GUIGlyph {
 
-    private int studentsTotal;
+//    private int studentsTotal;
     
-    private Shape[] dataShapes = new Shape[72];
+    //private Shape[] dataShapes = new Shape[72];
     
     private TextShape[] songTitleText = new TextShape[9];
     
@@ -18,18 +23,19 @@ public class GUIGlyph {
     
     public GUIGlyph(int totalStudents)
     {
-        studentsTotal = totalStudents;
+//        studentsTotal = totalStudents;
     }
     
     public void displayGlyphs(int page, Window window, LinkedList<Song> songs)
     {
         for (int i = 0; i < songs.size(); i++)
         {
-            TextShape title = new TextShape(15 * (i+1), 15, songs.get(i).getTitle());
+            TextShape title = new TextShape(15 * (i + 1), 15,
+                songs.get(i).getTitle());
             title.setBackgroundColor(Color.WHITE);
             songTitleText[i] = title;
-            TextShape artist = new TextShape(15 * (i+1), 30, "by " + 
-            songs.get(i).getArtist());
+            TextShape artist = new TextShape(15 * (i + 1),
+                30, "by " + songs.get(i).getArtist());
             artist.setBackgroundColor(Color.WHITE);
             songArtistText[i] = artist;
             window.addShape(artist);

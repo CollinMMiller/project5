@@ -12,8 +12,7 @@ public class Student
     private MajorEnum major;
     private RegionEnum region;
     private HobbyEnum hobby;
-    private LinkedList<Song> heard;
-    private LinkedList<Song> liked;
+    private String[] answers;
 
 
     /**
@@ -25,25 +24,20 @@ public class Student
      *            student's region
      * @param hobby
      *            student's hobby
-     * @param heard
-     *            heard list
-     * @param liked
-     *            liked list
+     * @param answers
+     *            answer array
      */
     public Student(
         MajorEnum major,
         RegionEnum region,
         HobbyEnum hobby,
-        LinkedList<Song> heard,
-        LinkedList<Song> liked)
+        String[] answers)
     {
 
         this.major = major;
         this.region = region;
         this.hobby = hobby;
-        this.liked = liked;
-        this.heard = heard;
-
+        this.answers = answers;
     }
 
 
@@ -82,23 +76,12 @@ public class Student
 
 
     /**
-     * Gets liked Songs
-     * 
-     * @return liked Songs
+     * Get answers array
+     * @return  answers
      */
-    public LinkedList<Song> getLiked()
+    public String[] getAnswers()
     {
-        return liked;
+        return answers;
     }
-
-
-    /**
-     * Gets heard songs
-     * 
-     * @return heard songs
-     */
-    public LinkedList<Song> getHeard()
-    {
-        return heard;
-    }
+    
 }

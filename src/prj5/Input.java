@@ -18,6 +18,7 @@ public class Input
     public static void main(String[] args) throws FileNotFoundException
     {
         FileReader fr = new FileReader(args[0], args[1]);
-        new GUIWindow(fr.createDatabase());
+        fr.createDatabase();
+//        new GUIWindow(fr.createDatabase());
     }
 }

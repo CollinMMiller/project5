@@ -38,12 +38,14 @@ public class SongStudentDataBase
      */
     public LinkedList<Song> getSongsByMajor()
     {
-        for (Song song : songs)
+        for (int i = 0; i < songs.size(); i++)
         {
-            for (int i = 0; i < 4; i++)
+            Song song = songs.get(i);
+            for (int j = 0; j < 4; j++)
             {
-                song.setHeard(i, 0);
-                song.setLiked(i, 0);
+                song.setHeard(j, 0);
+                song.setLiked(j, 0);
+                song.setTotalPeople(j, 0);
             }
             for (Student stu : students)
             {
@@ -51,13 +53,21 @@ public class SongStudentDataBase
                 {
                     continue;
                 }
-                if (stu.getLiked().contains(song))
+                String[] answers = stu.getAnswers();
+                int answerIndex = i * 2;
+                if (answers[answerIndex].equals(" "))
                 {
-                    song.incrementLiked(stu.getMajor().ordinal());
+                    continue;
                 }
-                if (stu.getHeard().contains(song))
+                
+                song.incrementTotalPeople(stu.getMajor().ordinal());
+                if (answers[answerIndex].equals("Yes"))
                 {
                     song.incrementHeard(stu.getMajor().ordinal());
+                }
+                if (answers[answerIndex + 1].equals("Yes"))
+                {
+                    song.incrementLiked(stu.getMajor().ordinal());
                 }
             }
         }
@@ -73,12 +83,14 @@ public class SongStudentDataBase
      */
     public LinkedList<Song> getSongsByRegion()
     {
-        for (Song song : songs)
+        for (int i = 0; i < songs.size(); i++)
         {
-            for (int i = 0; i < 4; i++)
+            Song song = songs.get(i);
+            for (int j = 0; j < 4; j++)
             {
-                song.setHeard(i, 0);
-                song.setLiked(i, 0);
+                song.setHeard(j, 0);
+                song.setLiked(j, 0);
+                song.setTotalPeople(j, 0);
             }
             for (Student stu : students)
             {
@@ -86,13 +98,21 @@ public class SongStudentDataBase
                 {
                     continue;
                 }
-                if (stu.getLiked().contains(song))
+                String[] answers = stu.getAnswers();
+                int answerIndex = i * 2;
+                if (answers[answerIndex].equals(" "))
                 {
-                    song.incrementLiked(stu.getRegion().ordinal());
+                    continue;
                 }
-                if (stu.getHeard().contains(song))
+                
+                song.incrementTotalPeople(stu.getRegion().ordinal());
+                if (answers[answerIndex].equals("Yes"))
                 {
                     song.incrementHeard(stu.getRegion().ordinal());
+                }
+                if (answers[answerIndex + 1].equals("Yes"))
+                {
+                    song.incrementLiked(stu.getRegion().ordinal());
                 }
             }
         }
@@ -108,12 +128,14 @@ public class SongStudentDataBase
      */
     public LinkedList<Song> getSongsByHobby()
     {
-        for (Song song : songs)
+        for (int i = 0; i < songs.size(); i++)
         {
-            for (int i = 0; i < 4; i++)
+            Song song = songs.get(i);
+            for (int j = 0; j < 4; j++)
             {
-                song.setHeard(i, 0);
-                song.setLiked(i, 0);
+                song.setHeard(j, 0);
+                song.setLiked(j, 0);
+                song.setTotalPeople(j, 0);
             }
             for (Student stu : students)
             {
@@ -121,19 +143,26 @@ public class SongStudentDataBase
                 {
                     continue;
                 }
-                if (stu.getLiked().contains(song))
+                String[] answers = stu.getAnswers();
+                int answerIndex = i * 2;
+                if (answers[answerIndex].equals(" "))
                 {
-                    song.incrementLiked(stu.getHobby().ordinal());
+                    continue;
                 }
-                if (stu.getHeard().contains(song))
+                
+                song.incrementTotalPeople(stu.getHobby().ordinal());
+                if (answers[answerIndex].equals("Yes"))
                 {
                     song.incrementHeard(stu.getHobby().ordinal());
+                }
+                if (answers[answerIndex + 1].equals("Yes"))
+                {
+                    song.incrementLiked(stu.getHobby().ordinal());
                 }
             }
         }
         return songs;
     }
-
 
     /**
      * getStudents
@@ -144,5 +173,4 @@ public class SongStudentDataBase
     {
         return students;
     }
-
 }

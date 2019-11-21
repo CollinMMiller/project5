@@ -81,6 +81,8 @@ public class LinkedList<E> implements Iterable<E>
 
     /**
      * Inserts element at specified index
+     * @param index index
+     * @param element element
      */
     public void add(int index, E element)
     {
@@ -465,6 +467,10 @@ public class LinkedList<E> implements Iterable<E>
                     lowestIndex = j;
                 }
             }
+            if (lowestIndex == i)
+            {
+                continue;
+            }
             E song = get(lowestIndex);
             remove(lowestIndex);
             add(i, song);
@@ -500,6 +506,10 @@ public class LinkedList<E> implements Iterable<E>
                     lowestIndex = j;
                 }
             }
+            if (lowestIndex == i)
+            {
+                continue;
+            }
             E song = get(lowestIndex);
             remove(lowestIndex);
             add(i, song);
@@ -522,7 +532,7 @@ public class LinkedList<E> implements Iterable<E>
             throw new IllegalStateException("Can only run sort on Song Lists");
         }
 
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < size - 1; i++)
         {
             int lowestIndex = i;
             String lowest = ((Song)get(i)).getGenre();
@@ -534,6 +544,10 @@ public class LinkedList<E> implements Iterable<E>
                     lowest = nextCheck;
                     lowestIndex = j;
                 }
+            }
+            if (lowestIndex == i)
+            {
+                continue;
             }
             E song = get(lowestIndex);
             remove(lowestIndex);
@@ -568,6 +582,10 @@ public class LinkedList<E> implements Iterable<E>
                     lowest = nextCheck;
                     lowestIndex = j;
                 }
+            }
+            if (lowestIndex == i)
+            {
+                continue;
             }
             E song = get(lowestIndex);
             remove(lowestIndex);

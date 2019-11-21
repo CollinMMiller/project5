@@ -12,8 +12,6 @@ public class StudentTest extends TestCase
 {
 
     private Student s;
-    private LinkedList<Song> h;
-    private LinkedList<Song> l;
     private MajorEnum m;
     private RegionEnum r;
     private HobbyEnum hobby;
@@ -25,11 +23,8 @@ public class StudentTest extends TestCase
      */
     public void setUp()
     {
-        h = new LinkedList<Song>();
-        l = new LinkedList<Song>();
-        h.add(new Song("t", "a", 2015, "G"));
-        l.add(new Song("t", "a", 2015, "G"));
-        s = new Student(m, r, hobby, h, l);
+        String[] info = {"Hi", "Hi2"};
+        s = new Student(m, r, hobby, info);
 
     }
 
@@ -61,14 +56,11 @@ public class StudentTest extends TestCase
         assertEquals(m, s.getMajor());
     }
 
-
     /**
-     * Test getLiked and getHeard
+     * Tests geAnswers
      */
-    public void testGetLikedAndHeard()
+    public void testGetAnswers()
     {
-        assertEquals(h, s.getHeard());
-        assertEquals(l, s.getLiked());
+        assertEquals("Hi", s.getAnswers()[0]);
     }
-
 }

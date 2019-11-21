@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * reader class
  *
- * @author <Zoe Zheng> <zoez>
+ * @author <Zoe Zheng> <zoez>, Collin Miller (collinm2)
  * @version <11/17/2019>
  */
 public class FileReader
@@ -117,28 +117,20 @@ public class FileReader
         {
             String[] tokens = scanner.nextLine().split(",");
 
-            LinkedList<Song> heard = new LinkedList<Song>();
-            LinkedList<Song> liked = new LinkedList<Song>();
+            //Math to get the length of the string array
+            //NOTE: / 2 * 2  is necessary
+            int length = tokens.length / 2 * 2 - 4;
+            
+            String[] answers = new String[length];
+            answers[length - 1] = ""; //if last column off data
 
             for (int i = 5; i < tokens.length; i++)
             {
-                String response = tokens[i];
-                int songNum = (i - 5) / 2;
-
-                if (response.equals("Yes"))
-                {
-                    if (i % 2 == 1)
-                    {
-                        heard.add(songList.get(songNum));
-                    }
-                    else
-                    {
-                        liked.add(songList.get(songNum));
-                    }
-                }
+                answers[i - 5] = tokens[i];
             }
+            
             Student student = new Student(getMajor(tokens[2]), getRegion(
-                tokens[3]), getHobby(tokens[4]), heard, liked);
+                tokens[3]), getHobby(tokens[4]), answers);
             students.add(student);
         }
         scanner.close();
@@ -205,19 +197,24 @@ public class FileReader
         System.out.println("Song Year: " + song.getYear());
         System.out.println("Heard");
         
+        int[] totals = song.getTotalPeople();
+        for (int i = 0; i < 4; i++)
+        {
+            totals[i] = totals[i] == 0 ? 1 : totals[i];
+        }
+        
         int[] heard = song.getHeard();
-        int totalStu = studentSurvey.size();
-        System.out.println("reading:" + heard[0] * 100 / totalStu +
-            " art:" + heard[1] * 100 / totalStu +
-            " sports:" + heard[2] * 100 / totalStu +
-            " music:" + heard[3] * 100 / totalStu);
+        System.out.println("reading:" + heard[0] * 100 / totals[0] +
+            " art:" + heard[1] * 100 / totals[1] +
+            " sports:" + heard[2] * 100 / totals[2] +
+            " music:" + heard[3] * 100 / totals[3]);
         
         System.out.println("Likes");
         int[] likes = song.getLiked();
-        System.out.println("reading:" + likes[0] * 100 / totalStu +
-            " art:" + likes[1] * 100 / totalStu +
-            " sports:" + likes[2] * 100 / totalStu +
-            " music:" + likes[3] * 100 / totalStu);
+        System.out.println("reading:" + likes[0] * 100 / totals[0] +
+            " art:" + likes[1] * 100 / totals[1] +
+            " sports:" + likes[2] * 100 / totals[2] +
+            " music:" + likes[3] * 100 / totals[3]);
         System.out.println();
     }
 }

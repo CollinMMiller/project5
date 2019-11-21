@@ -28,11 +28,16 @@ public class Song
     /**
      * Number of people who have liked the song
      */
-    private int[] numberOfLiked = new int[4];
+    private int[] numberOfLiked;
     /**
      * Number of people who have heard the song
      */
-    private int[] numberOfHeard = new int[4];
+    private int[] numberOfHeard;
+    
+    /**
+     * Total people in each field of major,hobby, or region
+     */
+    private int[] totalPeopleInField;
 
 
     /**
@@ -55,6 +60,7 @@ public class Song
         this.genre = genre;
         numberOfLiked = new int[4];
         numberOfHeard = new int[4];
+        totalPeopleInField = new int[4];
     }
 
 
@@ -105,6 +111,7 @@ public class Song
     /**
      * Sets the number of people who have liked the song
      * 
+     * @param index which hobby/major/skill
      * @param liked
      *            Amount of people who have liked the song
      */
@@ -128,7 +135,7 @@ public class Song
 
     /**
      * Sets the amount of people who have heard the song
-     * 
+     * @param index which hobby/major/skill
      * @param heard
      *            The number of people who have heard the song
      */
@@ -170,5 +177,33 @@ public class Song
     public void incrementHeard(int index)
     {
         numberOfHeard[index]++;
+    }
+    
+    /**
+     * Sets total amount of people for an index
+     * @param index index
+     * @param value value to be set
+     */
+    public void setTotalPeople(int index, int value)
+    {
+        totalPeopleInField[index] = value;
+    }
+    
+    /**
+     * Increments a value at and index
+     * @param index index
+     */
+    public void incrementTotalPeople(int index)
+    {
+        totalPeopleInField[index]++;
+    }
+    
+    /**
+     * Returns values at index
+     * @return values at index
+     */
+    public int[] getTotalPeople()
+    {
+        return totalPeopleInField;
     }
 }

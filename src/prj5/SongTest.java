@@ -14,7 +14,7 @@ public class SongTest extends TestCase
     /**
      * Creates a new song
      */
-    private Song misery_Business;
+    private Song miseryBusiness;
 
 
     /**
@@ -22,7 +22,7 @@ public class SongTest extends TestCase
      */
     public void setUp()
     {
-        misery_Business = new Song("Misery Business", "Paramore", 2007,
+        miseryBusiness = new Song("Misery Business", "Paramore", 2007,
             "Alternative");
     }
 
@@ -32,7 +32,7 @@ public class SongTest extends TestCase
      */
     public void testGetTitle()
     {
-        assertEquals("Misery Business", misery_Business.getTitle());
+        assertEquals("Misery Business", miseryBusiness.getTitle());
     }
 
 
@@ -41,7 +41,7 @@ public class SongTest extends TestCase
      */
     public void testGetArtist()
     {
-        assertEquals("Paramore", misery_Business.getArtist());
+        assertEquals("Paramore", miseryBusiness.getArtist());
     }
 
 
@@ -50,7 +50,7 @@ public class SongTest extends TestCase
      */
     public void testGetYear()
     {
-        assertEquals(2007, misery_Business.getYear());
+        assertEquals(2007, miseryBusiness.getYear());
     }
 
 
@@ -59,7 +59,7 @@ public class SongTest extends TestCase
      */
     public void testGetGenre()
     {
-        assertEquals("Alternative", misery_Business.getGenre());
+        assertEquals("Alternative", miseryBusiness.getGenre());
     }
 
 
@@ -68,14 +68,14 @@ public class SongTest extends TestCase
      */
     public void testGetLiked()
     {
-        misery_Business.setLiked(0, 10);
-        assertEquals(10, misery_Business.getLiked()[0]);
-        misery_Business.setLiked(1, 10);
-        assertEquals(10, misery_Business.getLiked()[1]);
-        misery_Business.setLiked(2, 10);
-        assertEquals(10, misery_Business.getLiked()[2]);
-        misery_Business.setLiked(3, 10);
-        assertEquals(10, misery_Business.getLiked()[3]);
+        miseryBusiness.setLiked(0, 10);
+        assertEquals(10, miseryBusiness.getLiked()[0]);
+        miseryBusiness.setLiked(1, 10);
+        assertEquals(10, miseryBusiness.getLiked()[1]);
+        miseryBusiness.setLiked(2, 10);
+        assertEquals(10, miseryBusiness.getLiked()[2]);
+        miseryBusiness.setLiked(3, 10);
+        assertEquals(10, miseryBusiness.getLiked()[3]);
     }
 
 
@@ -84,14 +84,14 @@ public class SongTest extends TestCase
      */
     public void testGetHeard()
     {
-        misery_Business.setHeard(0, 10);
-        assertEquals(10, misery_Business.getHeard()[0]);
-        misery_Business.setHeard(1, 10);
-        assertEquals(10, misery_Business.getHeard()[1]);
-        misery_Business.setHeard(2, 10);
-        assertEquals(10, misery_Business.getHeard()[2]);
-        misery_Business.setHeard(3, 10);
-        assertEquals(10, misery_Business.getHeard()[3]);
+        miseryBusiness.setHeard(0, 10);
+        assertEquals(10, miseryBusiness.getHeard()[0]);
+        miseryBusiness.setHeard(1, 10);
+        assertEquals(10, miseryBusiness.getHeard()[1]);
+        miseryBusiness.setHeard(2, 10);
+        assertEquals(10, miseryBusiness.getHeard()[2]);
+        miseryBusiness.setHeard(3, 10);
+        assertEquals(10, miseryBusiness.getHeard()[3]);
     }
 
 
@@ -100,13 +100,13 @@ public class SongTest extends TestCase
      */
     public void testIncrementMethods()
     {
-        assertEquals(0, misery_Business.getHeard()[0]);
-        misery_Business.incrementHeard(0);
-        assertEquals(1, misery_Business.getHeard()[0]);
+        assertEquals(0, miseryBusiness.getHeard()[0]);
+        miseryBusiness.incrementHeard(0);
+        assertEquals(1, miseryBusiness.getHeard()[0]);
 
-        assertEquals(0, misery_Business.getLiked()[0]);
-        misery_Business.incrementLiked(0);
-        assertEquals(1, misery_Business.getLiked()[0]);
+        assertEquals(0, miseryBusiness.getLiked()[0]);
+        miseryBusiness.incrementLiked(0);
+        assertEquals(1, miseryBusiness.getLiked()[0]);
     }
 
 }
