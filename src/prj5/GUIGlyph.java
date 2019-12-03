@@ -86,8 +86,8 @@ public class GUIGlyph {
                 }
                 int maxWidth = 50;
                 int height = 10;
-                Color[] colors = { Color.PINK, Color.BLUE,
-                    Color.YELLOW, Color.GREEN };
+                Color[] colors = { Color.MAGENTA, Color.BLUE,
+                    Color.ORANGE, Color.GREEN };
                 
                 for (int j = 0; j < 4; j++)
                 {

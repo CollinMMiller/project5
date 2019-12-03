@@ -243,7 +243,7 @@ public class GUIWindow {
         window.addShape(legend);
         window.moveToFront(legend);
         //read arts sport music
-        TextShape read = new TextShape(640, 120, "Read", Color.PINK);
+        TextShape read = new TextShape(640, 120, "Read", Color.MAGENTA);
         window.addShape(read);
         read.setBackgroundColor(transparent);
         window.moveToFront(read);
@@ -251,7 +251,7 @@ public class GUIWindow {
         window.addShape(arts);
         arts.setBackgroundColor(transparent);
         window.moveToFront(arts);
-        TextShape sports = new TextShape(640, 160, "Sports", Color.YELLOW);
+        TextShape sports = new TextShape(640, 160, "Sports", Color.ORANGE);
         window.addShape(sports);
         sports.setBackgroundColor(transparent);
         window.moveToFront(sports);
@@ -292,7 +292,7 @@ public class GUIWindow {
         legend.setBackgroundColor(transparent);
         window.addShape(legend);
         window.moveToFront(legend);
-        TextShape compS = new TextShape(630, 120, "Comp Sci", Color.PINK);
+        TextShape compS = new TextShape(630, 120, "Comp Sci", Color.MAGENTA);
         window.addShape(compS);
         compS.setBackgroundColor(transparent);
         window.moveToFront(compS);
@@ -300,7 +300,7 @@ public class GUIWindow {
         window.addShape(eng);
         eng.setBackgroundColor(transparent);
         window.moveToFront(eng);
-        TextShape math = new TextShape(625, 160, "Math/CMDA", Color.YELLOW);
+        TextShape math = new TextShape(625, 160, "Math/CMDA", Color.ORANGE);
         window.addShape(math);
         math.setBackgroundColor(transparent);
         window.moveToFront(math);
@@ -341,7 +341,7 @@ public class GUIWindow {
         legend.setBackgroundColor(transparent);
         window.addShape(legend);
         window.moveToFront(legend);
-        TextShape southE = new TextShape(630, 120, "Southeast", Color.PINK);
+        TextShape southE = new TextShape(630, 120, "Southeast", Color.MAGENTA);
         window.addShape(southE);
         southE.setBackgroundColor(transparent);
         window.moveToFront(southE);
@@ -349,7 +349,7 @@ public class GUIWindow {
         window.addShape(northE);
         northE.setBackgroundColor(transparent);
         window.moveToFront(northE);
-        TextShape other = new TextShape(640, 160, "US(other)", Color.YELLOW);
+        TextShape other = new TextShape(640, 160, "US(other)", Color.ORANGE);
         window.addShape(other);
         other.setBackgroundColor(transparent);
         window.moveToFront(other);
