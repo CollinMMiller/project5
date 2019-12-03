@@ -55,11 +55,7 @@ public class GUIGlyph {
     {
         for (int i = 0; i < 9; i++)
         {
-            if (page * 9 + i >= songs.size())
-            {
-                //TODO: Clear unused songs
-            }
-            else
+            if (page * 9 + i < songs.size())
             {
                 int xCenter = i % 3 * 200 + 90;
                 int yCenter = i / 3 * 90 + 12;
@@ -71,9 +67,9 @@ public class GUIGlyph {
                 window.addShape(songTitleText[i]);
                 
                 window.removeShape(songArtistText[i]);
-                songArtistText[i].setText(song.getArtist());
+                songArtistText[i].setText("By " + song.getArtist());
                 songArtistText[i].setX(xCenter -
-                    (song.getArtist().length() / 2 * 7) - 2);
+                    (song.getArtist().length() / 2 * 7) - 15);
                 window.addShape(songArtistText[i]);
                 
                 for(int j = 0; j < 8; j++)
