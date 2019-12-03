@@ -60,6 +60,8 @@ public class GUIGlyph {
                 int xCenter = i % 3 * 200 + 90;
                 int yCenter = i / 3 * 90 + 12;
                 Song song = songs.get(page * 9 + i);
+                if (song.getTitle().equals("Hotline Bling"))
+                    System.out.println("Test");
                 window.removeShape(songTitleText[i]);
                 songTitleText[i].setText(song.getTitle());
                 songTitleText[i].setX(xCenter -
