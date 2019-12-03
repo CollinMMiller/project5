@@ -44,6 +44,8 @@ public class GUIWindow {
      */
     private TextShape legend;
     
+    private DataTypeEnum currentData = DataTypeEnum.HOBBY;
+    
     /**
      * Creates a window with the given database
      * @param db Database of student songs
@@ -51,7 +53,7 @@ public class GUIWindow {
     public GUIWindow(SongStudentDataBase db)
     {
         database = db;
-        //this.songs = db.getStudents().
+        this.songs = db.getSongsByHobby();
         window = new Window();
         window.setTitle("Project 5: calliel, collinm2, zoez");
         Button hobby = new Button("Represent Hobby");
@@ -86,29 +88,7 @@ public class GUIWindow {
         next.onClick(this, "buttonNext");
         previous.disable();
         
-        
-        
     }
-    
-//    public static void main(String args[])
-//    {
-//        LinkedList<Song> songs = new LinkedList<Song>();
-//        LinkedList<Student> students = new LinkedList<Student>();
-//        Song a = new Song("Flowers", "Iann Dior", 2019, "Pop");
-//        Song b = new Song("Call Me", "Blondie", 2009, "Rap");
-//        songs.add(a);
-//        songs.add(b);
-//        for (int i = 0; i < 7; i++)
-//        {
-//            songs.add(new Song("Mr. Brightside", "The Killers", 2007,
-//                "Alternative"));
-//        }
-//        students.add(new Student(MajorEnum.COMP_SCI, RegionEnum.SOUTHEAST,
-//            HobbyEnum.ART, songs, songs));
-//        SongStudentDataBase s = new SongStudentDataBase(songs, students);
-//        //StudentSongDatabase s = new StudentSongDatabase();
-//        GUIWindow f = new GUIWindow(s);
-//    }
     
     /**
      * Turns to the previous page
@@ -117,10 +97,12 @@ public class GUIWindow {
     public void buttonPrev(Button button)
     {
         next.enable();
+        page--;
         if (page == 0)
         {
             previous.disable();
         }
+        displayPage();
     }
     
     /**
@@ -129,7 +111,8 @@ public class GUIWindow {
      */
     public void sortByArtistName(Button button)
     {
-        
+        this.songs.sortByArtist();
+        displayPage();
     }
     
     /**
@@ -138,7 +121,8 @@ public class GUIWindow {
      */
     public void sortBySongTitle(Button button)
     {
-        
+        this.songs.sortByTitle();
+        displayPage();
     }
     
     /**
@@ -147,7 +131,8 @@ public class GUIWindow {
      */
     public void sortByReleaseYear(Button button)
     {
-        
+        this.songs.sortByYear();
+        displayPage();
     }
     
     /**
@@ -156,9 +141,8 @@ public class GUIWindow {
      */
     public void sortByGenre(Button button)
     {
-        LinkedList<Song> hobbies = database.getSongsByHobby();
-        //hobbies.sortByGenre();
-        displayPage(hobbies);
+        this.songs.sortByGenre();
+        displayPage();
     }
 
     /**
@@ -168,26 +152,43 @@ public class GUIWindow {
     public void buttonNext(Button button)
     {
         previous.enable();
+        page++;
         if (page == Math.ceil(songs.size() / 9))
         {
             next.disable();
         }
+        displayPage();
     }
     
     /**
      * 
      * @param songOnPage
      */
-    public void displayPage(LinkedList<Song> songOnPage)
+    public void displayPage()
     {
+        window.removeAllShapes();
         //calls gui glyph
-        this.songs = songOnPage;
         if (Math.ceil(songs.size() / 9) < 2)
         {
             next.disable();
         }
-        GUIGlyph display = new GUIGlyph(database.getStudents().size());
-        display.displayGlyphs(page, window, songs);
+        GUIGlyph display = new GUIGlyph(window);
+        display.displayGlyphs(page, songs);
+        
+        switch (currentData)
+        {
+            case HOBBY:
+                hobbyLegend();
+                break;
+            case MAJOR:
+                majorLegend();
+                break;
+            case REGION:
+                regionLegend();
+                break;
+            default:
+                break;
+        }
     }
     
     /**
@@ -205,7 +206,16 @@ public class GUIWindow {
      */
     public void representHobby(Button button)
     {
-        window.removeAllShapes();
+        this.currentData = DataTypeEnum.HOBBY;
+        songs = database.getSongsByHobby();
+        displayPage();
+    }
+    
+    /**
+     * Display hobby legend
+     */
+    private void hobbyLegend()
+    {
         Color transparent = new Color(0, 0, 0, 0);
         Shape divide = new Shape (660, 225, 5, 20);
         divide.setBackgroundColor(Color.BLACK);
@@ -249,22 +259,13 @@ public class GUIWindow {
         window.addShape(music);
         music.setBackgroundColor(transparent);
         window.moveToFront(music);
-        
-        
-        
-        LinkedList<Song> hobbies = database.getSongsByHobby();
-        hobbies.sortByGenre();
-        displayPage(hobbies);
-        
     }
     
     /**
-     * 
-     * @param button Button when clicked
+     * Display major legend
      */
-    public void representMajor(Button button)
+    private void majorLegend()
     {
-        window.removeAllShapes();
         Color transparent = new Color(0, 0, 0, 0);
         Shape divide = new Shape (660, 225, 5, 20);
         divide.setBackgroundColor(Color.BLACK);
@@ -310,12 +311,10 @@ public class GUIWindow {
     }
     
     /**
-     * 
-     * @param button Button when clicked
+     * Display region legend
      */
-    public void representRegion(Button button)
+    public void regionLegend()
     {
-        window.removeAllShapes();
         Color transparent = new Color(0, 0, 0, 0);
         Shape divide = new Shape (660, 225, 5, 20);
         divide.setBackgroundColor(Color.BLACK);
@@ -358,6 +357,27 @@ public class GUIWindow {
         window.addShape(non);
         non.setBackgroundColor(transparent);
         window.moveToFront(non);
-        
+    }
+    
+    /**
+     * 
+     * @param button Button when clicked
+     */
+    public void representMajor(Button button)
+    {
+        this.currentData = DataTypeEnum.MAJOR;
+        songs = database.getSongsByMajor();
+        displayPage();
+    }
+    
+    /**
+     * 
+     * @param button Button when clicked
+     */
+    public void representRegion(Button button)
+    {
+        this.currentData = DataTypeEnum.REGION;
+        songs = database.getSongsByRegion();
+        displayPage();
     }
 }

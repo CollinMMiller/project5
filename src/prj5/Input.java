@@ -19,6 +19,6 @@ public class Input
     {
         FileReader fr = new FileReader(args[0], args[1]);
         fr.createDatabase();
-//        new GUIWindow(fr.createDatabase());
+        new GUIWindow(fr.createDatabase());
     }
 }
