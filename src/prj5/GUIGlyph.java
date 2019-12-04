@@ -29,9 +29,6 @@ public class GUIGlyph {
             int xCenter = i % 3 * 200 + 90;
             int yCenter = i / 3 * 90 + 12;
             
-            Shape bar = new Shape(xCenter, yCenter + 33, 5, 40, Color.BLACK);
-            window.addShape(bar);
-            
             songTitleText[i] = new TextShape(xCenter, yCenter, "");
             songTitleText[i].setBackgroundColor(Color.WHITE);
             window.addShape(songTitleText[i]);
@@ -59,6 +56,11 @@ public class GUIGlyph {
             {
                 int xCenter = i % 3 * 200 + 90;
                 int yCenter = i / 3 * 90 + 12;
+
+                Shape bar = new Shape(xCenter, yCenter + 33, 5, 40,
+                    Color.BLACK);
+                window.addShape(bar);
+                
                 Song song = songs.get(page * 9 + i);
                 if (song.getTitle().equals("Hotline Bling"))
                     System.out.println("Test");

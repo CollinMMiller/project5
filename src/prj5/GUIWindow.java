@@ -313,7 +313,7 @@ public class GUIWindow {
     /**
      * Display region legend
      */
-    public void regionLegend()
+    private void regionLegend()
     {
         Color transparent = new Color(0, 0, 0, 0);
         Shape divide = new Shape (670, 225, 5, 20);
